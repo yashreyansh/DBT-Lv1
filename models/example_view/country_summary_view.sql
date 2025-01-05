@@ -1,3 +1,8 @@
+{{ config(materialized='view' )}}
+
+-- any config given in file takes priority over dbt_project.yml file
+
+
 with coach_data as (
     select a.Coach_country, count(*) as no_of_coaches 
     from dbt_test.stg_coaches a
