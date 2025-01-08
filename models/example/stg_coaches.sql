@@ -7,7 +7,9 @@ stg_country_coach_count as  (
     group by Coach_country, Coach_sport
 )
 
-select c.Coach_country, c.Coach_sport, 
+select 
+ROW_NUMBER() OVER() as Coach_ID,
+c.Coach_country, c.Coach_sport, 
 REGEXP_SUBSTR(c.Coach_name, '[^ ]+',1,1) as Coach_nm1, 
 REGEXP_SUBSTR(c.Coach_name, '[^ ]+',1,2) as Coach_nm2,
 REGEXP_SUBSTR(c.Coach_name, '[^ ]+',1,3) as Coach_nm3,
