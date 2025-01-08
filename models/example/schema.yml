@@ -2,20 +2,25 @@
 version: 2
 
 models:
-    - name: my_first_dbt_model
+    - name: stg_athelete
       description: "A starter dbt model"
       columns:
-          - name: id
-            description: "The primary key for this table"
+          - name: Athelete_ID
+            description: "primary key for athelete"
             tests:
                 - unique
                 - not_null
-
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
+    - name: stg_coaches
+      description: "coaches details"
       columns:
-          - name: id
-            description: "The primary key for this table"
+          - name: Coach_ID
+            description: "efgh"
             tests:
-                - unique
                 - not_null
+                - unique
+          - name: fellow_coaches
+            description: "abcd"
+            tests:
+                - not_null
+                - dbt_utils.expression_is_true:
+                    expression: "fellow_coaches > 0"
